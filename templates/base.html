@@ -1,0 +1,38 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static',filename = 'icon/favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static',filename = 'icon/favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container">
+  <div class="page-header">
+    {% for message in get_flashed_messages() %}
+
+      <div class="alert alert-warning">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+
+    {% endfor %}
+  {% block cuizz %}
+  {% endblock %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.lang('cn') }}
+{% endblock %}
